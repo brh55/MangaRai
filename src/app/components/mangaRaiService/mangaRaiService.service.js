@@ -6,22 +6,34 @@
         .factory('MangaRaiService', MangaRaiService);
 
     function MangaRaiService(Restangular) {
-        var service = Restangular.one('list', 0);
+        var listService = Restangular.one('list', 0);
+        var mangaService = Restangular.all('manga');
 
         return {
+            /** Fetches all of Mangas and returns the JSON */
             listAllMangas: function () {
-                return service.get().then(function(data) {
+                return listService.get().then(function(data) {
+                    return data;
+                });
+            },
+            /**
+             * Get specific Manga based on ID
+             * @param  {String} mangaId Manga ID to retrieve
+             * @return {Object}         Relevant Manga object
+             */
+            getManga: function (mangaId) {
+                return mangaService.get(mangaId).then(function(data) {
                     return data;
                 });
             },
             /**
              * List covers of all the Mangas
-             * @param  {Number} limit    [description]
+             * @param  {Integer} limit  Specify limit of how many covers to display
              * @param  {Bool} buildUrl  Default: True. Builds required URLS
              * @return {Array}  Returns a list of image covers
              */
             listCovers: function (limit, buildUrl) {
-                return service.get().then(function(data) {
+                return listService.get().then(function(data) {
                     var baseUrl = '';
                     var coverAllList = [];
                     var coverList = [];
