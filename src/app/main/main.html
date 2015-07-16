@@ -22,8 +22,7 @@
 
         <div class="large-9 small-12 columns">
             <main ng-controller='RecentController as recent'>
-                {{recent.covers}}
-                {{recent.list}}
+                <img ng-repeat="img in recent.covers" src="{{img}}">
             </main>
         </div>
     </div>

@@ -1,19 +1,19 @@
 (function() {
-  'use strict';
+    'use strict';
 
-  angular
-    .module('mangaRai')
-    .controller('RecentController', RecentController);
+    angular
+        .module('mangaRai')
+        .controller('RecentController', RecentController);
 
-  /** @ngInject */
-  function RecentController (MangaRaiService) {
-    var vm = this;
+    /** @ngInject */
+    function RecentController (MangaRaiService) {
+        var vm = this;
 
-    vm.list = [];
-    vm.covers = [];
+        vm.list = [];
+        vm.covers = [];
 
-    MangaRaiService.listCovers(10).then(function(covers) {
-      console.log(covers);
-    });
-  }
+        MangaRaiService.listCovers(10).then(function (covers) {
+            vm.covers = covers;
+        });
+    }
 })();
