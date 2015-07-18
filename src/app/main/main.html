@@ -5,7 +5,7 @@
 </div> -->
 <!-- App Body -->
     <div class="row">
-        <div class="main-nav large-3 small-12 columns">
+        <div class="main-nav large-2 small-12 columns">
             <nav>
                 <section class="logo">
                     <h1>MangaRai</h1>
@@ -20,17 +20,26 @@
             </nav>
         </div>
 
-        <div class="large-9 small-12 columns">
+
+        <div class="large-10 small-12 columns app-body">
             <main ng-controller='RecentController as recent'>
-                <div class="manga-component" ng-repeat="manga in recent.mangas">
-                    <div class="cover-wrapper">
-                        <img src="https://cdn.mangaeden.com/mangasimg/{{manga.im}}" alt="" class="">
+                <div class="row">
+                    <div ng-animate="'animate'" ng-repeat="manga in recent.model.mangas">
+                        <div class="small-12 large-4 columns manga-component" ng-style="recent.action.setClear($index)">
+                            <div class="cover-wrapper">
+                                <img src="https://cdn.mangaeden.com/mangasimg/{{manga.im}}" alt="" class="">
+                            </div>
+                            <section class="manga-summary">
+                                <h2>{{manga.a}}</h2>
+                                <p>Tags: {{manga.c}}</p>
+                                <p>Status:
+                                    <span ng-if="manga.s === 2">Completed</span>
+                                    <span ng-if="manga.s === 1">On-going</span>
+                                </p>
+                            </section>
+                        </div>
+                        </div>
                     </div>
-                    <section class="manga-summary">
-                        <h2>{{manga.a}}</h2>
-                        <p>Tags: {{manga.c}}</p>
-                        <p>Status: {{manga.s}}</p>
-                    </section>
                 </div>
             </main>
         </div>
