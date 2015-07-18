@@ -68,6 +68,7 @@ h1 {
 }
 
 nav {
+    position: fixed;
     color: white;
     background: black;
 }
@@ -75,4 +76,8 @@ nav {
 .main-nav {
     height: 100%;
     padding: 0;
+
+    li {
+        list-style-type: none;
+    }
 }

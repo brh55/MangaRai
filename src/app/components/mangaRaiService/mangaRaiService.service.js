@@ -1,6 +1,7 @@
 (function() {
   'use strict';
 
+  /* global _ */
     angular
         .module('mangaRai')
         .factory('MangaRaiService', MangaRaiService);
@@ -10,10 +11,21 @@
         var mangaService = Restangular.all('manga');
 
         return {
-            /** Fetches all of Mangas and returns the JSON */
-            listAllMangas: function () {
+            /**
+             * List all the mangas specified by the parameter
+             * @param  {Number} limit limits the return built from
+             * @return {Array}       list of Manga Objects             */
+            listAllMangas: function (limit) {
                 return listService.get().then(function(data) {
-                    return data;
+                    var listCount = _.defaults(limit || data.manga.length);
+                    var mangaData = [];
+
+                    console.log(listCount);
+                    for (var i = 0; i < listCount; i++) {
+                        mangaData.push(data.manga[i]);
+                    }
+
+                    return mangaData;
                 });
             },
             /**
@@ -61,8 +73,6 @@
                     return coverList;
                 });
             }
-
-
         };
     }
 })();

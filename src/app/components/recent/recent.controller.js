@@ -6,19 +6,18 @@
         .controller('RecentController', RecentController);
 
     /** @ngInject */
-    function RecentController (MangaRaiService) {
+    function RecentController (MangaRaiService, $scope) {
         var vm = this;
 
         vm.list = [];
         vm.covers = [];
+        vm.mangas = [];
 
-        MangaRaiService.listCovers(10).then(function (covers) {
-            vm.covers = covers;
-        });
-
-        MangaRaiService.getManga('5492fbbe45b9ef55c2a4f8bb').then(function (manga) {
+        MangaRaiService.listAllMangas(10).then(function(manga) {
+            vm.mangas = manga;
             console.log(manga);
         });
+
     }
 
 })();

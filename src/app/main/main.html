@@ -22,7 +22,16 @@
 
         <div class="large-9 small-12 columns">
             <main ng-controller='RecentController as recent'>
-                <img ng-repeat="img in recent.covers" src="{{img}}">
+                <div class="manga-component" ng-repeat="manga in recent.mangas">
+                    <div class="cover-wrapper">
+                        <img src="https://cdn.mangaeden.com/mangasimg/{{manga.im}}" alt="" class="">
+                    </div>
+                    <section class="manga-summary">
+                        <h2>{{manga.a}}</h2>
+                        <p>Tags: {{manga.c}}</p>
+                        <p>Status: {{manga.s}}</p>
+                    </section>
+                </div>
             </main>
         </div>
     </div>
