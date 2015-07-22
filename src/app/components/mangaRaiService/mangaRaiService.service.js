@@ -20,7 +20,6 @@
                     var listCount = _.defaults(limit || data.manga.length);
                     var mangaData = [];
 
-                    console.log(listCount);
                     for (var i = 0; i < listCount; i++) {
                         mangaData.push(data.manga[i]);
                     }

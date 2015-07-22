@@ -19,18 +19,24 @@
         vm.action = {
             setClear: function(index) {
                 if (index % 3 === 0) {
-                    console.log('returning shit');
                     return {
                         'clear': 'both'
                     };
                 }
+            },
+            setFlex: function(index) {
+                return {
+                    'display': 'flex',
+                    'flex-wrap': 'flex'
+                };
             }
         }
 
         MangaRaiService.listAllMangas(12).then(function(manga) {
-            vm.model.mangas = manga;
-        });
+            var mangas = manga;
 
+            vm.model.mangas = _.chunk(mangas, 3);
+        });
     }
 
 })();

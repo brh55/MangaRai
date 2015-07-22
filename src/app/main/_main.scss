@@ -1,0 +1,42 @@
+// Manga Component
+
+.manga-component {
+    background-color: white;
+    margin: 2% 1%;
+    padding: 0;
+    box-shadow: 0 2px 7.68px .32px rgba(0, 0, 0, 0.06),0 12px 26px 0 rgba(0, 0, 0, 0.01);
+    border: 1px solid rgb(211, 206, 206);
+
+    @media only screen and (min-width: 64.0625em) {
+        width: 30.33333%
+    }
+
+    .manga-summary {
+        padding: 0.75em 1em;
+    }
+
+    .cover-wrapper img {
+        display: block;
+        max-height: 350px;
+        width: 100%;
+    }
+
+    h2 {
+        text-transform: capitalize;
+        color: $font-grey;
+        border-bottom: 1px solid rgb(236, 233, 233);
+    }
+
+    p {
+        font-size: 16px;
+        color: $font-light-grey;
+        line-height: 20px;
+    }
+
+    .no-image {
+        background-color: #E4E3E3;
+        min-height: 363px;
+    }
+
+}
+

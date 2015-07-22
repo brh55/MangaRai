@@ -23,14 +23,14 @@
 
         <div class="large-10 small-12 columns app-body">
             <main ng-controller='RecentController as recent'>
-                <div class="row">
-                    <div ng-animate="'animate'" ng-repeat="manga in recent.model.mangas">
-                        <div class="small-12 large-4 columns manga-component" ng-style="recent.action.setClear($index)">
+                <div class="row flex-wrapper" ng-repeat="group in recent.model.mangas">
+                        <div ng-repeat="manga in group" class="small-12 large-4 columns manga-component" ng-style="recent.action.setClear($index)">
                             <div class="cover-wrapper">
-                                <img src="https://cdn.mangaeden.com/mangasimg/{{manga.im}}" alt="" class="">
+                                <img ng-if="manga.im" src="https://cdn.mangaeden.com/mangasimg/{{manga.im}}" alt="{{manga.a}} Cover Image" class="">
+                                <div ng-if="!manga.im" class="no-image"><i class="ion-images"></i></div>
                             </div>
                             <section class="manga-summary">
-                                <h2>{{manga.a}}</h2>
+                                <h2>{{manga.a | titleClean }}</h2>
                                 <p>Tags: {{manga.c}}</p>
                                 <p>Status:
                                     <span ng-if="manga.s === 2">Completed</span>
@@ -38,8 +38,6 @@
                                 </p>
                             </section>
                         </div>
-                        </div>
-                    </div>
                 </div>
             </main>
         </div>
