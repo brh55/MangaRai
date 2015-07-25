@@ -2,7 +2,6 @@
   'use strict';
 
     describe('Filter: titleClean', function() {
-        var titleClean;
         var $filter;
 
         beforeEach(module('mangaRai'));

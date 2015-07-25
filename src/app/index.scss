@@ -9,7 +9,7 @@ $topbar-bg-color: #5aadbb;
  *  sass version in their bower.json...
  */
 @import "../../bower_components/foundation/scss/foundation";
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700|Noticia+Text:400,700);
 
 
 /**
@@ -20,11 +20,12 @@ $topbar-bg-color: #5aadbb;
 // endbower
 
 // Variables
-$font-family: 'Lato', arial, sans-serif;
+$font-lato: 'Lato', arial, sans-serif;
+$font-notica: 'Noticia Text', serif;
 
 // Colors
 $light-grey: #D8D8D8;
-$dark-grey: #A2A3A3;
+$dark-grey: #444748;
 $font-grey: #5D6061;
 $font-light-grey: #838388;
 
@@ -36,7 +37,7 @@ nav,
 .container,
 .ng-scope {
     height: 100%;
-    font-family: $font-family;
+    font-family: $font-lato;
 }
 
 h1,
@@ -46,12 +47,24 @@ h4,
 h5,
 h6,
 p {
-    font-family: $font-family;
-    overflow: auto;
+    font-family: $font-lato;
 }
 
-.app-body {
-    background-color: $light-grey;
+h2 {
+    font-size: 1.3125rem;
+    line-height: 21px;
+}
+
+body {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9f9f9+0,ededed+100 */
+    background: rgb(249,249,249); /* Old browsers */
+    background: -moz-linear-gradient(top,  rgba(249,249,249,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(249,249,249,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  rgba(249,249,249,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  rgba(249,249,249,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  rgba(249,249,249,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  rgba(249,249,249,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
 }
 
 .panel {
@@ -72,6 +85,7 @@ p {
     max-width: 100%;
 }
 
+// Helper/Abstract Classes
 /**
  *  Do not remove this comments bellow. It's the markers used by gulp-inject to inject
  *  all your sass files automatically
@@ -103,6 +117,11 @@ nav {
     }
 }
 
+.app-view {
+    width: 83.3333%;
+    float: right;
+}
+
 .flex-wrapper {
     display : flex;
     flex-wrap: wrap;
@@ -111,8 +130,7 @@ nav {
 // Animations
 
 .animate-enter,
-.animate-leave
-{
+.animate-leave {
     -webkit-transition: 400ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
     -moz-transition: 400ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;
     -ms-transition: 400ms cubic-bezier(0.250, 0.100, 0.250, 1.000) all;

@@ -18,5 +18,4 @@
 
     RestangularProvider.setBaseUrl('https://www.mangaeden.com/api/');
   }
-
 })();

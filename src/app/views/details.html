@@ -1,0 +1,17 @@
+<p>Url: {{ manga.model.url}}</p>
+<p>Starts With: {{ manga.model.startsWith}}</p>
+<p>Year: {{ manga.model.year}}</p>
+<p>Author: {{ manga.model.author}}</p>
+<p ng-bind-html="manga.model.artist"></p>
+<p>Hits: {{ manga.model.hits}}</p>
+<p>Status: {{ manga.model.status}}</p>
+<p ng-bind-html="manga.model.description">Description: </p>
+
+<p>{{ manga.model.status }}</p>
+<p>{{ manga.model.chaptersNumber }}</p>
+<p>{{ manga.model.chapterDate }}</p>
+<p>{{ manga.model.chapterTitle }}</p>
+<p>{{ manga.model.chapterId }}</p>
+<div ng-repeat="title in manga.model.aka">
+    <p ng-bind-html="title"></p>
+</div>

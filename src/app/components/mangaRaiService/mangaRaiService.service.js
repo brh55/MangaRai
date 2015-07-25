@@ -7,16 +7,17 @@
         .factory('MangaRaiService', MangaRaiService);
 
     function MangaRaiService(Restangular) {
-        var listService = Restangular.one('list', 0);
+        var listService = Restangular.all('list');
         var mangaService = Restangular.all('manga');
+        var chapterService = Restangular.all('chapter');
 
         return {
             /**
              * List all the mangas specified by the parameter
              * @param  {Number} limit limits the return built from
              * @return {Array}       list of Manga Objects             */
-            listAllMangas: function (limit) {
-                return listService.get().then(function(data) {
+            listAllMangas: function (page, limit) {
+                return listService.get(0, {p: page}).then(function(data) {
                     var listCount = _.defaults(limit || data.manga.length);
                     var mangaData = [];
 
@@ -71,6 +72,12 @@
 
                     return coverList;
                 });
+            },
+
+            getChapter: function (id) {
+                return chapterService.get(id).then(function(data) {
+                    return data;
+                })
             }
         };
     }

@@ -1,0 +1,17 @@
+<article class="manga-detail">
+    <div class="manga-spec">
+        <span class="author"><i class="ion-ios-glasses"></i> <i>author:</i> {{vm.model.author}}</span></br>
+        <span class="artist"><i class="ion-paintbrush"></i> <i>artist:</i> <span ng-bind-html="vm.model.artist"><span></span></span></span></br>
+        <span ng-if="vm.model.status === 2"><i class="ion-arrow-graph-up-right"></i> On-going</span>
+        <span ng-if="vm.model.status === 1"><i class="ion-android-done"></i> Completed</span>
+    </div>
+    <p ng-bind-html="vm.model.limitDesc"></p>
+    <p>{{vm.model.st}}</p>
+    <p>{{vm.model.url}}</p>
+    <p>{{vm.model.startsWith}}</p>
+    <p>{{vm.model.year}}</p>
+
+    <p>{{vm.model.hits}}</p>
+</article>
+
+
