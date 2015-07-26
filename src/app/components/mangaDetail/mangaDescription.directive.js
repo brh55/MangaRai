@@ -23,32 +23,13 @@
 
         function mangaDescriptionController ($filter) {
             var vm = this;
-            var m;
 
-            vm.model = m = {
-                description: '',
-                url: '',
-                startsWith: '',
-                year: '',
-                author: '',
-                artist: '',
-                hits: '',
-                status: '',
-                limitDesc: ''
-            };
+            vm.model = {};
 
             MangaRaiService.getManga(vm.mangaId).then(function(manga) {
-                m.description = manga.description.toString();
-                m.url = manga.url;
-                m.startsWith = manga.startsWith;
-                m.year = manga.released;
-                m.author = manga.author;
-                m.artist = manga.artist;
-                m.hits = manga.hits;
-                m.status = manga.status;
-
-                var shortDesc = $filter('limitTo')(m.description, 120);
-                m.limitDesc = shortDesc.concat("...");
+                vm.model = manga;
+                var shortDesc = $filter('limitTo')(vm.model.description, 120);
+                vm.model.limitDesc = shortDesc.concat("...");
             });
         }
       }

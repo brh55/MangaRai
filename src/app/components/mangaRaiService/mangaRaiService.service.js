@@ -34,8 +34,22 @@
              * @return {Object}         Relevant Manga object
              */
             getManga: function (mangaId) {
-                return mangaService.get(mangaId).then(function(data) {
-                    return data;
+                return mangaService.get(mangaId).then(function(manga) {
+                    var mangaObject = {
+                        aka: manga.aka,
+                        artist: manga.artist,
+                        author: manga.author,
+                        chapters: manga.chapters,
+                        description: manga.description.toString(),
+                        hits: manga.hits,
+                        startsWith: manga.startsWith,
+                        status: manga.status,
+                        title: manga.title,
+                        url: manga.url,
+                        year: manga.released
+                    };
+
+                    return mangaObject;
                 });
             },
             /**

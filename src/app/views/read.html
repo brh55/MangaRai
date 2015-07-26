@@ -1,9 +1,9 @@
 <slick infinite=true slides-to-show=1 slides-to-scroll=3>
     <div ng-repeat=" page in read.model.pages | orderBy: 'num' ">
-
-    <img width="884" height="1300" id="mainImg" alt="Manga: {{ read.model.title }} - Chapter: {{ read.model.chapterNum }} - Page: {{ page.num }} " ng-srcset="//cdn.mangaeden.com/mangasimg/600x/{{ page.imgUrl }} 600w, //cdn.mangaeden.com/mangasimg/{{ page.imgUrl }} {{ page.width }}w" ng-src="//cdn.mangaeden.com/mangasimg/{{ page.imgUrl }}">
-    {{ page.num }}
+        <picture>
+             <source ng-srcset="//cdn.mangaeden.com/mangasimg/600x/{{ page.imgUrl }} 600w, //cdn.mangaeden.com/mangasimg/{{ page.imgUrl }} {{ page.width }}w">
+             <img ng-src="//cdn.mangaeden.com/mangasimg/{{ page.imgUrl }}" alt="Manga: {{ read.model.title }} - Chapter: {{ read.model.chapterNum }} - Page: {{ page.num }}">
+         </picture>
+        {{ page.num }}
     </div>
 </slick>
-
-<!-- <img width="884" height="1300" id="mainImg" alt="Manga Black Clover - Chapter 16 - Page 0" srcset="//cdn.mangaeden.com/mangasimg/600x/28/283906885f75a8475a65a9cfebab76161c4e7c9cea16114dba9154af.png 600w, //cdn.mangaeden.com/mangasimg/28/283906885f75a8475a65a9cfebab76161c4e7c9cea16114dba9154af.png 884w" src="//cdn.mangaeden.com/mangasimg/28/283906885f75a8475a65a9cfebab76161c4e7c9cea16114dba9154af.png" onerror="this.src='//static.mangaeden.com/mangasimg/28/283906885f75a8475a65a9cfebab76161c4e7c9cea16114dba9154af.png';"> -->

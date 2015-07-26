@@ -8,25 +8,12 @@
     /** @ngInject */
     function mangaController (MangaRaiService, $filter, $stateParams, $state) {
         var vm = this;
-        var m;
 
-        vm.model = m = {
-            aka: [],
-            artist: '',
-            author: '',
-            chapterCount: '',
-            chapters: [],
-            description: '',
-            hits: '',
-            mangaId: '',
-            startsWith: '',
-            status: '',
-            title: '',
-            url: '',
-            year: ''
+        vm.model = {
+            mangaId: ''
         };
 
-        m.mangaId = $stateParams.id;
+        vm.model.mangaId = $stateParams.id;
 
         // 5, # <-- chapter's number
         // 1275542373.0, # <-- chapter's date
@@ -35,21 +22,10 @@
 
 
         MangaRaiService.getManga(vm.model.mangaId).then(function(manga) {
-            m.aka = manga.aka;
-            m.artist = manga.artist;
-            m.author = manga.author;
-            m.chapters = manga.chapters;
-            m.description = manga.description.toString();
-            m.hits = manga.hits;
-            m.startsWith = manga.startsWith;
-            m.status = manga.status;
-            m.title = manga.title;
-            m.url = manga.url;
-            m.year = manga.released;
             console.log(manga);
-
+            vm.model = manga;
             if (manga.chapters.length === 0) {
-                m.chaptersCount = manga.chapters.length;
+                vm.model.chaptersCount = manga.chapters.length;
                 var d = new Date(manga.chapters[0][1]);
 
                 var month = d.getMonth();

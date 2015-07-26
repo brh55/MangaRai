@@ -35,8 +35,7 @@
 
         MangaRaiService.listAllMangas("1").then(function(manga) {
             var mangas = manga;
-
-            vm.model.mangas = _.chunk(mangas, 20);
+            vm.model.mangas = _.chunk(mangas, 3);
         });
     }
 
