@@ -19,6 +19,12 @@
         templateUrl: 'app/views/details.html',
         controller: 'mangaController',
         controllerAs: 'manga'
+      })
+      .state('read', {
+        url: '/manga/:id/:title/chapter/:chapterNum',
+        templateUrl: 'app/views/read.html',
+        controller: 'readController',
+        controllerAs: 'read'
       });
 
     $urlRouterProvider.otherwise('/');

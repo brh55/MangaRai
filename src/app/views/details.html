@@ -6,12 +6,19 @@
 <p>Hits: {{ manga.model.hits}}</p>
 <p>Status: {{ manga.model.status}}</p>
 <p ng-bind-html="manga.model.description">Description: </p>
+<p ng-bind-html="manga.model.title"></p>
 
-<p>{{ manga.model.status }}</p>
-<p>{{ manga.model.chaptersNumber }}</p>
-<p>{{ manga.model.chapterDate }}</p>
-<p>{{ manga.model.chapterTitle }}</p>
-<p>{{ manga.model.chapterId }}</p>
+<p>Manga Status: {{ manga.model.status }}</p>
+<p>Chapter Number: {{ manga.model.chaptersCount }}</p>
+<p>Chapter Date: {{ manga.model.chapterDate }}</p>
+<p> Chapter Title: {{ manga.model.chapterTitle }}</p>
+<p>Chapter ID: {{ manga.model.chapterId }}</p>
+
+<div ng-repeat="chapter in manga.model.chapters | orderBy: chapter[0]">
+    <p>Chapter #: {{ chapter[0] }}</p>
+    <a ui-sref="read({id: chapter[3], title: manga.model.title, chapterNum: chapter[0]})"><p>Chapter Title: {{ chapter[2] }}</p></a>
+</div>
+
 <div ng-repeat="title in manga.model.aka">
     <p ng-bind-html="title"></p>
 </div>

@@ -74,10 +74,24 @@
                 });
             },
 
-            getChapter: function (id) {
+            getPages: function (id) {
                 return chapterService.get(id).then(function(data) {
-                    return data;
-                })
+                    var chapterLength = data.images.length;
+                    var pages = [];
+                    for (var i = 0; i < chapterLength; i++) {
+                        var pageNum = data.images[i][0] + 1;
+                        var page = {
+                            num: parseInt(pageNum),
+                            imgUrl: data.images[i][1],
+                            width: data.images[i][2],
+                            height: data.images[i][3]
+                        };
+
+                        pages.push(page);
+                    }
+
+                    return pages;
+                });
             }
         };
     }

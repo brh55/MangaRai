@@ -11,50 +11,60 @@
         var m;
 
         vm.model = m = {
-            description: '',
-            url: '',
-            startsWith: '',
-            year: '',
-            author: '',
-            artist: '',
-            hits: '',
-            status: '',
-            mangaId: '',
-            title: '',
             aka: [],
+            artist: '',
+            author: '',
+            chapterCount: '',
+            chapters: [],
+            description: '',
+            hits: '',
+            mangaId: '',
+            startsWith: '',
+            status: '',
+            title: '',
+            url: '',
+            year: ''
         };
 
         m.mangaId = $stateParams.id;
 
-        // 5, # <-- chapter's number 
-        // 1275542373.0, # <-- chapter's date 
-        // "5", # <-- chapter's title 
-        // "4e711cb0c09225616d037cc2" # <-- chapter's ID (chapter.id in the next section) 
+        // 5, # <-- chapter's number
+        // 1275542373.0, # <-- chapter's date
+        // "5", # <-- chapter's title
+        // "4e711cb0c09225616d037cc2" # <-- chapter's ID (chapter.id in the next section)
 
 
         MangaRaiService.getManga(vm.model.mangaId).then(function(manga) {
-            m.url = manga.url;
-            m.description = manga.description.toString();
-            m.startsWith = manga.startsWith;
-            m.year = manga.released;
-            m.author = manga.author;
-            m.artist = manga.artist;
-            m.hits = manga.hits;
-            m.status = manga.status;
             m.aka = manga.aka;
-            m.chaptersNumber = manga.chapters[0][0];
-            m.chapterDate = new Date(manga.chapters[0][1]);
-            m.chapterTitle = manga.chapters[0][2];
-            m.chapterId = manga.chapters[0][3];
+            m.artist = manga.artist;
+            m.author = manga.author;
+            m.chapters = manga.chapters;
+            m.description = manga.description.toString();
+            m.hits = manga.hits;
+            m.startsWith = manga.startsWith;
+            m.status = manga.status;
+            m.title = manga.title;
+            m.url = manga.url;
+            m.year = manga.released;
+            console.log(manga);
 
-            // var chaptersNum = manga.chapters_len;
-            // for (var i; i > chaptersNum; i++) {
-            //     MangaRaiService.getChapters()
-            // }
+            if (manga.chapters.length === 0) {
+                m.chaptersCount = manga.chapters.length;
+                var d = new Date(manga.chapters[0][1]);
+
+                var month = d.getMonth();
+                var day = d.getDate();
+                var year = d.getFullYear()
+
+                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "Sepetember", "October", "November", "December"];
+
+                var dateBuild = months[month] + ", " + day + " " + year;
+
+                m.chapterDate = dateBuild;
+            }
+
+
         });
-
-        // TODO: Find a better alternative;
-        // If the author is undefined redirect
     }
 
 })();
