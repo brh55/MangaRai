@@ -22,8 +22,9 @@
 
 
         MangaRaiService.getManga(vm.model.mangaId).then(function(manga) {
-            console.log(manga);
             vm.model = manga;
+                                            console.log('mangaController:')
+                    console.log(vm.model);
             if (manga.chapters.length === 0) {
                 vm.model.chaptersCount = manga.chapters.length;
                 var d = new Date(manga.chapters[0][1]);

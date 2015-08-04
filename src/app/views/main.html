@@ -1,25 +1,27 @@
 <main>
-    <div class="row flex-wrapper" ng-repeat="group in recent.model.mangas">
-        <div ng-repeat="manga in group" class="small-12 large-3 columns manga-component" ng-style="recent.action.setClear($index)">
-            <figure class="cover-wrapper">
-                <div class="cover-overflow-wrap">
-                    <div ng-if="manga.im" style="background-image: url('https://cdn.mangaeden.com/mangasimg/{{manga.im}}')" class="cover"></div>
-                    <div ng-if="!manga.im" class="no-image cover"><i class="ion-images"></i></div>
-                </div>
+    <div infinite-scroll='recent.action.loadManga()' infinite-scroll-distance='2'>
+        <div class="row flex-wrapper" ng-repeat="group in recent.model.mangaList">
+            <div ng-repeat="manga in group" class="small-12 large-3 columns manga-component" ng-style="recent.action.setClear($index)">
+                <figure class="cover-wrapper">
+                    <div class="cover-overflow-wrap">
+                        <div ng-if="manga.im" style="background-image: url('https://cdn.mangaeden.com/mangasimg/{{manga.im}}')" class="cover"></div>
+                        <div ng-if="!manga.im" class="no-image cover"><i class="ion-images"></i></div>
+                    </div>
 
-                <figcaption>
-                    <h3 class="title">{{ manga.t }}</h3>
-                    <a ui-sref="detail({ id: manga.i })">read now</a>
-                </figcaption>
-            </figure>
+                    <figcaption>
+                        <h3 class="title">{{ manga.t }}</h3>
+                        <a ui-sref="detail({ id: manga.i })">read now</a>
+                    </figcaption>
+                </figure>
 
-            <section class="manga-summary">
-                <h2>{{ manga.t }}</h2>
+                <section class="manga-summary">
+                    <h2>{{ manga.t }}</h2>
 
-                <!-- directive to loop through list and generate manga details -->
-                <p manga-description="manga.i"></p>
-                <p>Tags: {{ manga.c | tagClean }}</p>
-            </section>
+                    <!-- directive to loop through list and generate manga details -->
+                    <p manga-description="manga.i"></p>
+                    <p>Tags: {{ manga.c | tagClean }}</p>
+                </section>
+            </div>
         </div>
     </div>
 </main>

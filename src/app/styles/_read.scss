@@ -1,10 +1,28 @@
 /**
  * Reading Stylesheet
  */
+.read-nav {
+    position: absolute;
+    top: 0;
+    z-index: 1;
+    height: initial;
+    width: 100%;
+    height: 10%;
+
+    select {
+        width: 15%;
+        display: inline-block;
+        right: 15%;
+    }
+}
 
 .manga-read {
     position: absolute;
-    top: 0;
     height: 100%;
     width: 100%;
+}
+
+.page-body {
+    position: absolute;
+    top: 10%;
 }

@@ -37,11 +37,17 @@
                 return mangaService.get(mangaId).then(function(manga) {
                     var mangaObject = {
                         aka: manga.aka,
+                        alias: manga.alias,
                         artist: manga.artist,
                         author: manga.author,
+                        chapterCount: manga.chapter_len,
                         chapters: manga.chapters,
+                        coverUrl: manga.imageUrl,
                         description: manga.description.toString(),
                         hits: manga.hits,
+                        lastChapterDate: manga.last_chapter_date,
+                        mangaId: mangaId,
+                        releasedYear: manga.year,
                         startsWith: manga.startsWith,
                         status: manga.status,
                         title: manga.title,

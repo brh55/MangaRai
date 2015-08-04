@@ -1,9 +1,18 @@
-<slick infinite=true slides-to-show=1 slides-to-scroll=3>
-    <div ng-repeat=" page in read.model.pages | orderBy: 'num' ">
-        <picture>
-             <source ng-srcset="//cdn.mangaeden.com/mangasimg/600x/{{ page.imgUrl }} 600w, //cdn.mangaeden.com/mangasimg/{{ page.imgUrl }} {{ page.width }}w">
-             <img ng-src="//cdn.mangaeden.com/mangasimg/{{ page.imgUrl }}" alt="Manga: {{ read.model.title }} - Chapter: {{ read.model.chapterNum }} - Page: {{ page.num }}">
-         </picture>
-        {{ page.num }}
-    </div>
-</slick>
+<nav class="read-nav">
+    <a ui-sref="home">Home</a>
+    <select ng-model="read.model.chapterNum" ng-options="chapter[0] for chapter in read.model.manga.chapters">
+        <option value="">Chapters:</option>
+    </select>
+</nav>
+
+<section class="page-body">
+    <slick init-onload="true" slidesToShow="1">
+        <div ng-repeat=" page in read.model.pages | orderBy: 'num' " dom-ready>
+            <picture>
+                 <source ng-srcset="//cdn.mangaeden.com/mangasimg/600x/{{ page.imgUrl }} 600w, //cdn.mangaeden.com/mangasimg/{{ page.imgUrl }} {{ page.width }}w">
+                 <img ng-src="//cdn.mangaeden.com/mangasimg/{{ page.imgUrl }}" alt="Manga: {{ read.model.title }} - Chapter: {{ read.model.chapterNum }} - Page: {{ page.num }}">
+             </picture>
+            {{ page.num }}
+        </div>
+    </slick>
+</section>

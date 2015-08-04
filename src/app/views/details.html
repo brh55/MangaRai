@@ -16,7 +16,8 @@
 
 <div ng-repeat="chapter in manga.model.chapters | orderBy: chapter[0]">
     <p>Chapter #: {{ chapter[0] }}</p>
-    <a ui-sref="read({id: chapter[3], title: manga.model.title, chapterNum: chapter[0]})"><p>Chapter Title: {{ chapter[2] }}</p></a>
+    Chapter ID: {{ chapter[3] }}
+    <a ui-sref="read({mangaId: manga.model.mangaId, title: manga.model.title, chapterID: chapter[3], chapterNum: chapter[0]})"><p>Chapter Title: {{ chapter[2] }}</p></a>
 </div>
 
 <div ng-repeat="title in manga.model.aka">

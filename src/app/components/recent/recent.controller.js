@@ -13,6 +13,7 @@
             list: [],
             covers: [],
             mangas: [],
+            mangaList: [],
             tags: ''
         };
 
@@ -31,11 +32,18 @@
                     'flex-wrap': 'flex'
                 };
             },
+            loadManga: function () {
+                if (!angular.isUndefined(vm.model.mangas)) {
+                    var previousLoaded = vm.model.mangaList.length;
+                    vm.model.mangaList.push(vm.model.mangas[previousLoaded + 1]);
+                }
+            }
         };
 
-        MangaRaiService.listAllMangas("1").then(function(manga) {
+        MangaRaiService.listAllMangas("0").then(function(manga) {
             var mangas = manga;
             vm.model.mangas = _.chunk(mangas, 3);
+            vm.model.mangaList.push(vm.model.mangas[0]);
         });
     }
 
