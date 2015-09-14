@@ -1,0 +1,29 @@
+/** Details */
+.side-details {
+    .cover-wrapper {
+        padding: 2em;
+
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+    }
+
+    .cover-container {
+        background-color: #ffffff;
+        padding: 1em;
+        border: 1px solid #eaeaea;
+    }
+
+    .category-container {
+        margin: 0;
+
+        li {
+            display: inline-block;
+            padding: 7px 10px;
+            border: 1px solid #F3F3F3;
+            background-color: white;
+            margin: .4rem 1rem 0 0;
+        }
+    }
+}

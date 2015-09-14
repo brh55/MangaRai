@@ -22,18 +22,16 @@
 
 
         MangaRaiService.getManga(vm.model.mangaId).then(function(manga) {
-            vm.model = manga;
-                                            console.log('mangaController:')
-                    console.log(vm.model);
+            vm.model.manga = manga;
+            console.log(vm.model);
+            vm.model.manga.chaptersCount = vm.model.manga.chapters.length;
+
             if (manga.chapters.length === 0) {
-                vm.model.chaptersCount = manga.chapters.length;
                 var d = new Date(manga.chapters[0][1]);
 
                 var month = d.getMonth();
                 var day = d.getDate();
                 var year = d.getFullYear()
-
-                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "Sepetember", "October", "November", "December"];
 
                 var dateBuild = months[month] + ", " + day + " " + year;
 

@@ -20,22 +20,36 @@
     <!-- endinject -->
     <!-- endbuild -->
   </head>
-  <body>
+  <body ng-app="mangaRai">
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="container" ng-app="mangaRai">
+<!--     <div class="container login-bar">
         <div class="row">
-            <nav ng-include src="'app/views/nav.html'"></nav>
+            <div class="large-4 columns">
+            Manga Rai
+            </div>
+            <div class="large-8 columns">
+            </div>
+        </div>
+    </div> -->
 
+    <div class="container"  ng-controller="IndexController as index">
+        <div class="row">
+            <div class="main-nav large-2 small-12 columns">
+                <nav ng-include src="'app/views/nav.html'"></nav>
+            </div>
             <main class="app-view">
-                <div class="large-12 small-12 columns app-body">
+                <div class="large-10 small-12 columns app-body">
+                    <div class="section-heading"><i class="{{index.model.iconOn}}"></i>{{index.model.sectionOn}}</div>
                     <div ui-view></div>
                 </div>
             </main>
         </div>
-        <div ui-view="reading" class="manga-read"></div>
+        <div ng-show="index.$state.includes('read')" class="manga-read">
+            <div ui-view="reading"></div>
+        </div>
     </div>
 
 

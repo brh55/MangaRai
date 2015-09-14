@@ -35,18 +35,30 @@
              */
             getManga: function (mangaId) {
                 return mangaService.get(mangaId).then(function(manga) {
+                    var buildUrl = "http://www.mangaeden.com/img/";
+                    var language;
+
+                    if (manga.language === 0) {
+                        language = "English";
+                    } else {
+                        language = "Italian";
+                    }
+
                     var mangaObject = {
                         aka: manga.aka,
                         alias: manga.alias,
                         artist: manga.artist,
                         author: manga.author,
+                        categories: manga.categories,
                         chapterCount: manga.chapter_len,
                         chapters: manga.chapters,
-                        coverUrl: manga.imageUrl,
+                        coverUrl: manga.imageURL,
                         description: manga.description.toString(),
                         hits: manga.hits,
+                        language: language,
                         lastChapterDate: manga.last_chapter_date,
                         mangaId: mangaId,
+                        image: buildUrl + manga.image,
                         releasedYear: manga.year,
                         startsWith: manga.startsWith,
                         status: manga.status,
@@ -54,6 +66,8 @@
                         url: manga.url,
                         year: manga.released
                     };
+
+                    console.log(manga);
 
                     return mangaObject;
                 });
@@ -96,6 +110,7 @@
 
             getPages: function (id) {
                 return chapterService.get(id).then(function(data) {
+                    console.log(data);
                     var chapterLength = data.images.length;
                     var pages = [];
                     for (var i = 0; i < chapterLength; i++) {

@@ -26,7 +26,7 @@
                     "reading@": {
                         templateUrl: 'app/views/read.html',
                         controller: 'readController',
-                        controllerAs: 'read'
+                        controllerAs: 'vm'
                 }
             }
         });

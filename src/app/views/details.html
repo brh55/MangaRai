@@ -1,25 +1,48 @@
-<p>Url: {{ manga.model.url}}</p>
-<p>Starts With: {{ manga.model.startsWith}}</p>
-<p>Year: {{ manga.model.year}}</p>
-<p>Author: {{ manga.model.author}}</p>
-<p ng-bind-html="manga.model.artist"></p>
-<p>Hits: {{ manga.model.hits}}</p>
-<p>Status: {{ manga.model.status}}</p>
-<p ng-bind-html="manga.model.description">Description: </p>
-<p ng-bind-html="manga.model.title"></p>
 
-<p>Manga Status: {{ manga.model.status }}</p>
-<p>Chapter Number: {{ manga.model.chaptersCount }}</p>
-<p>Chapter Date: {{ manga.model.chapterDate }}</p>
-<p> Chapter Title: {{ manga.model.chapterTitle }}</p>
-<p>Chapter ID: {{ manga.model.chapterId }}</p>
+<section class="large-8 small-12 columns details-view">
+    <h1 ng-bind-html="manga.model.manga.title"></h1>
+    <p>by {{ manga.model.manga.author}} | Year: {{ manga.model.manga.year}}</p>
+    <p ng-bind-html="manga.model.manga.artist"></p>
+    <p ng-bind-html="manga.model.manga.description">Description: </p>
+    <p>Chapter Date: {{ manga.model.manga.chapterDate }}</p>
+    <p>Chapter ID: {{ manga.model.manga.chapterId }}</p>
 
-<div ng-repeat="chapter in manga.model.chapters | orderBy: chapter[0]">
-    <p>Chapter #: {{ chapter[0] }}</p>
-    Chapter ID: {{ chapter[3] }}
-    <a ui-sref="read({mangaId: manga.model.mangaId, title: manga.model.title, chapterID: chapter[3], chapterNum: chapter[0]})"><p>Chapter Title: {{ chapter[2] }}</p></a>
-</div>
+    <div ng-repeat="chapter in manga.model.manga.chapters | orderBy: chapter[0]">
+        <a ui-sref="read({mangaId: manga.model.manga.mangaId, title: manga.model.manga.title, chapterID: chapter[3], chapterNum: chapter[0]})"><p>Chapter {{ chapter[0] }}: {{ chapter[2] }}</p></a>
+        <p>Uploaded: {{ chapter[1] | epoch }}</p>
+    </div>
+    </section>
 
-<div ng-repeat="title in manga.model.aka">
-    <p ng-bind-html="title"></p>
-</div>
+<section class="large-4 small-12 columns side-details">
+    <div class="cover-wrapper">
+        <div class="cover-container">
+            <img class="cover" ng-src="{{manga.model.manga.image}}">
+        </div>
+    </div>
+
+    <div class="stats-wrapper">
+        <ul>
+            <li><i class="ion-ios-calendar-outline"></i>{{ manga.model.manga.year }}</li>
+            <li><i class="ion-ios-eye-outline"></i>{{ manga.model.manga.hits}} Views</li>
+            <li ng-if="manga.model.manga.status === 2"><i class="ion-ios-pulse-strong"></i> Ongoing</li>
+            <li ng-if="manga.model.manga.status === 1"><i class="ion-android-done"></i> Completed</li>
+            <li><i class="ion-ios-book-outline"></i>{{ manga.model.manga.chaptersCount }} Chapters Available</li>
+            <li><i class="ion-chatbubble-working"></i>{{ manga.model.manga.language }}</li>
+            <li><a ng-href="{{ manga.model.manga.url }}" target="_blank"><i class="ion-android-open"></i> More Details </a></li>
+        </ul>
+
+        <ul class="category-container">
+            <li ng-repeat="category in manga.model.manga.categories">{{ category }}</li>
+        </ul>
+
+        <div class="similar-container">
+            <h4>Similar Mangas:</h4>
+            <ul>
+                <li><a href="#/sample"></a></li>
+                <li><a href="#/sample"></a></li>
+                <li><a href="#/sample"></a></li>
+                <li><a href="#/sample"></a></li>
+            </ul>
+        </div>
+    </div>
+</section>

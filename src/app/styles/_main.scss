@@ -63,6 +63,7 @@
 
     .manga-summary {
         padding: .8em 1em;
+        text-align: center;
     }
 
     .manga-detail {
@@ -70,7 +71,7 @@
 
         .author {
             color: #9a9a9a;
-            font-family: $font-notica;
+            font-family: $font-maven;
         }
     }
 
@@ -80,19 +81,6 @@
         height: 250px;
         max-height: 350px;
         margin: 0;
-
-        &:hover {
-            figcaption {
-                transition: transform .4s, opacity .1s;
-                transform: rotateY(0deg);
-                opacity: 1;
-            }
-
-            .cover {
-                margin-left: 35%;
-                transition: all .4s;
-            }
-        }
     }
 
     .cover {
@@ -108,12 +96,12 @@
     h2 {
         min-height: 59px;
         padding: 0 .8rem .8rem;
-        border-bottom: 1px solid rgb(236, 233, 233);
         color: $font-grey;
-        font-family: $font-notica;
+        font-family: $font-maven;
         font-weight: 700;
         line-height: 25px;
-        text-transform: capitalize;
+        letter-spacing: 2px;
+        text-transform: uppercase;
     }
 
     p {

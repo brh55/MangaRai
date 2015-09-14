@@ -29,7 +29,7 @@
             MangaRaiService.getManga(vm.mangaId).then(function(manga) {
                 vm.model = manga;
                 var shortDesc = $filter('limitTo')(vm.model.description, 120);
-                vm.model.limitDesc = shortDesc.concat("...");
+                vm.model.limitDesc = shortDesc.concat(". . .");
             });
         }
       }
